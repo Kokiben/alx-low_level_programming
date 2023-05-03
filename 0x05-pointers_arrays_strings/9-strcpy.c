@@ -2,8 +2,9 @@
 
 /**
 * _strcpy - copy a string
-* @dest: Destination value 
-* @src: Source value
+* @dest: Destination value
+* @src: copy from
+* Return: String
 */
 
 char *_strcpy(char *dest, char *src)
@@ -15,5 +16,5 @@ for (i = 0; src[i] != '\0'; i++)
 dest[i] = src[i];
 }
 dest[i++] = '\0';
-return(dest);
+return (dest);
 }
