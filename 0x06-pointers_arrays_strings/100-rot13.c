@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
-* rot13 - encoder rot13
-* @s:  pointer to string params
+* rot13 - encodes a string using rot13.
+* @str:  The string to be encoded
 *
-* Return: *s
+* Return: A pointer to the encoded string.
 */
-char *rot13(char *s)
+char *rot13(char *str)
 {
 int index1 = 0, index2;
 
@@ -28,20 +28,16 @@ char rot13key[52] = "'N', 'O', 'P', 'Q', 'R', 'S', 'T',
 'z', 'a', 'b', 'c', 'd', 'e',
 'f', 'i', 'j', 'k', 'l','m'";
 while (str[index1])
-
+{
 for (index2 = 0; index2 < 52; index2++)
-
 {
 if (str[index1] == alphabet[index2])
-
 {
 str[index1] = rot13key[index2];
 break;
-
 }
 }
 index1++;
-
 }
 return (str);
 
