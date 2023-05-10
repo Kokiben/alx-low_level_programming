@@ -19,5 +19,5 @@ s++;
 _print_rev_recursion(s);
 s--;
 
-_putcha(*s);
+_putchar(*s);
 }
