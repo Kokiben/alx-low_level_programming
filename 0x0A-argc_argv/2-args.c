@@ -3,7 +3,7 @@
 
 
 /**
-* main – prints all the args content
+* main – prints all arguments
 * @argc: argument count
 * @argv: argument vector
 *
