@@ -25,7 +25,7 @@ ci++;
 conct = malloc(sizeof(char) * (i + ci + 1));
 
 if (conct == NULL)
-return (null);
+return (NULL);
 i = ci = 0;
 while (s1[i] != '\0')
 {
