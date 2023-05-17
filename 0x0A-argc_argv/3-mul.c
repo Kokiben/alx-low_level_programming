@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
-* _atoi – converts a string to an integer
+* _atoi–Converts a string to an integer
 * @s: string to be converted
 *
 * Return: the int converted from the string
@@ -46,7 +46,7 @@ return (n);
 }
 
 /**
-* main – multiplies two numbers
+* main-prints sum of 2 numbers.
 * @argc: number of arguments
 * @argv: array of arguments
 *
@@ -55,7 +55,7 @@ return (n);
 int main(int argc, char *argv[])
 {
 
-int result,  num1, num2;
+int result, num1, num2;
 
 if (argc < 3 || argc > 3)
 {
