@@ -16,7 +16,6 @@ while (s[i])
 if (s[i] < '0' || s[i] > '9')
 return (0);
 i++;
-
 }
 return (1);
 }
@@ -74,7 +73,6 @@ for (len1 = len1 - 1; len1 >= 0; len1--)
 {
 digit1 = s1[len1] - '0';
 carry = 0;
-
 for (len2 = _strlen(s2) - 1; len2 >= 0; len2--)
 {
 digit2 = s2[len2] - '0';
