@@ -21,16 +21,16 @@ while (format[i])
 {
 switch (format[i])
 {
-case'c':
+case 'c':
 printf("%s%c", sep, va_arg(list, int));
 break;
-case'i':
+case 'i':
 printf("%s%d", sep, va_arg(list, int));
 break;
-case'f':
+case 'f':
 printf("%s%d", sep, va_arg(list, int));
 break;
-case's':
+case 's':
 str = va_arg(list, char*);
 if (!str)
 str  = "(nil)";
