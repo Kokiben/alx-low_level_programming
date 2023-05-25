@@ -31,7 +31,7 @@ case 'f':
 printf("%s%f", sep, va_arg(list, double));
 break;
 case 's':
-str = va_arg(list, char*);
+str = va_arg(list, char *);
 if (!str)
 str  = "(nil)";
 printf("%s%s", sep, str);
@@ -41,7 +41,7 @@ default:
 i++;
 continue;
 }
-sep = ",";
+sep = ", ";
 i++;
 
 }
