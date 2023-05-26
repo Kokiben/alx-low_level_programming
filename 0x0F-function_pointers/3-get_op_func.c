@@ -1,5 +1,6 @@
 #include "3-calc.h"
 #include <stdlib.h>
+#include <string.h>
 
 /**
 * get_op_func - Selects the correct function to perform the operation asked by the us* er.
@@ -21,10 +22,10 @@ int i = 0;
 
 while (i < 5)
 {
-if (s && s[0] == ops[i].op[0] && !s[1])
+if (strcmp(s, ops[i].op) == 0)
 return (ops[i].f);
 i++;
 }
 
-return (NULL);
+return (0);
 }
