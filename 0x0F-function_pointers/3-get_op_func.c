@@ -24,6 +24,7 @@ while (i < 5)
 {
 if (strcmp(s, ops[i].op) == 0)
 return (ops[i].f);
+
 i++;
 }
 
