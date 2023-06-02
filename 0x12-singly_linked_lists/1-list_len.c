@@ -1,5 +1,5 @@
-#include "lists.h"
 #include <stdlib.h>
+#include "lists.h"
 
 /**
 * list_len - returns of the number of elements in
