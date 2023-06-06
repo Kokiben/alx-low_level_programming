@@ -31,7 +31,7 @@ free(temp);
 */
 size_t free_listint_safe(listint_t **h)
 {
-size_t num = 0;
+size_t numnode = 0;
 listp_t *hp, *new, *add;
 listint_t *bir;
 
@@ -42,7 +42,6 @@ new = malloc(sizeof(listp_t));
 
 if (new == NULL)
 exit(98);
-
 new->p = (void *)*h;
 new->next = hp;
 hp = new;
@@ -56,17 +55,16 @@ if (*h == add->p)
 {
 *h = NULL;
 free_listp2(&hp);
-return (num);
+return (numnode);
 }
 }
 
 bir = *h;
 *h = (*h)->next;
 free(bir);
-num++;
+numnode++;
 }
-
 *h = NULL;
-free_listp2(&hp);
-return (num);
+free_listp2(&hp)
+return (numnode);
 }

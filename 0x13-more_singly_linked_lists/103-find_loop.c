@@ -10,33 +10,33 @@
 listint_t *find_listint_loop(listint_t *head)
 {
 
-listint_t *l2;
-listint_t *lis;
+listint_t *p3;
+listint_t *pre;
 
-l2 = head;
-lis = head;
-while (head && l2 && l2->next)
+p3 = head;
+pre = head;
+while (head && p3 && p3->next)
 {
 head = head->next;
-l2 = l2->next->next;
+p3 = p3->next->next;
 
-if (head == l2)
+if (head == p3)
 {
-head = lis;
-lis =  l2;
+head = pre;
+pre =  p3;
 while (1)
 {
-l2 = lis;
-while (l2->next != head && l2->next != lis)
+p3 = pre;
+while (p3->next != head && p3->next != pre)
 {
-l2 = l2->next;
+p3 = p3->next;
 }
-if (l2->next == head)
+if (p3->next == head)
 break;
 
 head = head->next;
 }
-return (l2->next);
+return (p3->next);
 }
 }
 return (NULL);
