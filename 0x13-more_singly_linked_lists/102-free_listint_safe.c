@@ -9,13 +9,14 @@
 void free_listp2(listp_t **head)
 {
 listp_t *temp;
-listp_t *lis;
+listp_t *bir;
+
 if (head != NULL)
 {
-lis = *head;
-while ((temp = lis) != NULL)
+bir = *head;
+while ((temp = bir) != NULL)
 {
-lis = lis->next;
+bir = bir->next;
 free(temp);
 }
 *head = NULL;
@@ -32,7 +33,7 @@ size_t free_listint_safe(listint_t **h)
 {
 size_t num = 0;
 listp_t *hp, *new, *add;
-listint_t *lis;
+listint_t *bir;
 
 hp = NULL;
 while (*h != NULL)
@@ -59,9 +60,9 @@ return (num);
 }
 }
 
-lis = *h;
+bir = *h;
 *h = (*h)->next;
-free(lis);
+free(bir);
 num++;
 }
 
