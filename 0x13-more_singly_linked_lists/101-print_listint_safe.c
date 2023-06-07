@@ -84,4 +84,3 @@ printf("-> [%p] %d\n", (void *)head, head->n);
 /* return the number of nodes in the list */
 return (nodes);
 }
-
