@@ -23,8 +23,6 @@ return (0);
 /* initialize the tortoise and hare pointers */
 tortoise = head->next;
 hare = (head->next)->next;
-
-/* iterate through the list until the hare pointer meets the tortoise pointer */
 while (hare)
 {
 if (tortoise == hare)
@@ -39,8 +37,6 @@ nodes++;
 tortoise = tortoise->next;
 hare = hare->next;
 }
-
-/* iterate through the rest of the loop to get the total number of nodes in the loop */
 tortoise = tortoise->next;
 while (tortoise != hare)
 {
@@ -83,8 +79,6 @@ printf("[%p] %d\n", (void *)head, head->n);
 head = head->next;
 }
 }
-
-/* if the list is looped, print each node up to the loop point and the loop point itself */
 else
 {
 for (index = 0; index < nodes; index++)
