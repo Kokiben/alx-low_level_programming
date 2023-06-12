@@ -50,7 +50,8 @@ fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, PERMISSIONS);
 if (fd_to == -1)
 print_error("Error: Can't write to", argv[2], 99);
 
-while ((read_count = read(fd_from, buffer, BUFFER_SIZE)) > 0) {
+while ((read_count = read(fd_from, buffer, BUFFER_SIZE)) > 0)
+{
 write_count = write(fd_to, buffer, read_count);
 if (write_count == -1)
 print_error("Error: Can't write to", argv[2], 99);
@@ -67,5 +68,5 @@ dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from);
 if (close(fd_to) == -1)
 dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to);
 
-return 0;
+return (0);
 }
