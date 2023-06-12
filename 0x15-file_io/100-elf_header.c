@@ -13,19 +13,19 @@ exit(EXIT_FAILURE);
 
 void print_elf_header(Elf64_Ehdr *hdr) {
 printf("ELF Header:\n");
-printf("  Magic:   ");
+printf("  Magic:  ");
 for (int i = 0; i < EI_NIDENT; i++) {
 printf("%02x ", hdr->e_ident[i]);
 }
 printf("\n");
-printf("  Class:                             %s\n",
+printf("  Class:  %s\n",
 hdr->e_ident[EI_CLASS] == ELFCLASS32 ? "ELF32" :
 hdr->e_ident[EI_CLASS] == ELFCLASS64 ? "ELF64" : "Invalid class");
-printf("  Data:                              %s\n",
+printf("  Data: %s\n",
 hdr->e_ident[EI_DATA] == ELFDATA2LSB ? "2's complement, little endian" :
 hdr->e_ident[EI_DATA] == ELFDATA2MSB ? "2's complement, big endian" : "Invalid data encoding");
-printf("  Version:                           %d (current)\n", hdr->e_ident[EI_VERSION]);
-printf("  OS/ABI:                            ");
+printf("  Version: %d (current)\n", hdr->e_ident[EI_VERSION]);
+printf("  OS/ABI:  ");
 switch (hdr->e_ident[EI_OSABI]) {
 case ELFOSABI_SYSV:
 printf("UNIX - System V\n");
@@ -40,7 +40,7 @@ default:
 printf("Unknown\n");
 break;
 }
-printf("  ABI Version:                       %d\n", hdr->e_ident[EI_ABIVERSION]);printf("  Type:                              ");
+printf("  ABI Version: %d\n", hdr->e_ident[EI_ABIVERSION]);printf("  Type:  ");
 switch (hdr->e_type) {
 case ET_NONE:
 printf("NONE (Unknown type)\n");
@@ -61,7 +61,7 @@ default:
 printf("Unknown\n");
 break;
 }
-printf("  Entry point address:               0x%lx\n", hdr->e_entry);
+printf("  Entry point address: 0x%lx\n", hdr->e_entry);
 }
 
 int main(int argc, char *argv[]) {
