@@ -24,12 +24,12 @@ printf("  Magic:   ");
 for (i = 0; i < EI_NIDENT; i++)
 {
 printf("%02x%c", header->e_ident[i], i == EI_NIDENT - 1 ? '\n' : ' ');
-printf("  Class:                             %s\n", header->e_ident[EI_CLASS] == ELFCLASS32 ? "ELF32" : "ELF64");
-printf("  Data:                              %s\n", header->e_ident[EI_DATA] == ELFDATA2LSB ? "2's complement, little endian" : "2's complement, big endian");
-printf("  Version:                           %d (current)\n", header->e_ident[EI_VERSION]);
-printf("  OS/ABI:                            %s\n", header->e_ident[EI_OSABI] == ELFOSABI_SYSV ? "UNIX - System V" : "Unknown");
-printf("  ABI Version:                       %d\n", header->e_ident[EI_ABIVERSION]);
-printf("  Type:                              %s\n", header->e_type == ET_NONE ? "NONE (Unknown type)" :
+printf("  Class: %s\n", header->e_ident[EI_CLASS] == ELFCLASS32 ? "ELF32" : "ELF64");
+printf("  Data: %s\n", header->e_ident[EI_DATA] == ELFDATA2LSB ? "2's complement, little endian" : "2's complement, big endian");
+printf("  Version:  %d (current)\n", header->e_ident[EI_VERSION]);
+printf("  OS/ABI: %s\n", header->e_ident[EI_OSABI] == ELFOSABI_SYSV ? "UNIX - System V" : "Unknown");
+printf("  ABI Version:  %d\n", header->e_ident[EI_ABIVERSION]);
+printf("  Type:  %s\n", header->e_type == ET_NONE ? "NONE (Unknown type)" :
 header->e_type == ET_REL ? "REL (Relocatable file)" :
 header->e_type == ET_EXEC ? "EXEC (Executable file)" :
 header->e_type == ET_DYN ? "DYN (Shared object file)" :
