@@ -1,8 +1,6 @@
+#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <errno.h>
 
 #define BUFFER_SIZE 1024
 #define PERMISSIONS 0664
