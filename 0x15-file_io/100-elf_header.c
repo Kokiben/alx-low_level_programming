@@ -261,8 +261,7 @@ exit(98);
 }
 
 /**
-* mai displays info contained in
-*        ELF header at start of an ELF file.
+* main: Displays info contained in ELF header at start of an ELF file.
 * @argc: num of arguments supplied to program.
 * @argv: an array of pointers to arguments.
 *
