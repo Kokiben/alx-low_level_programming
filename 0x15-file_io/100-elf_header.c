@@ -189,7 +189,7 @@ e_ident[EI_ABIVERSION]);
 
 /**
  * print_type - prints type of an ELF header.
- * @i_type: ELF type.
+ * @e_type: ELF type.
  * @e_ident: pointer to an array containing ELF class.
  */
 void print_type(unsigned int e_type, unsigned char *e_ident)
