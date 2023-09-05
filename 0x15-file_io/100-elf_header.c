@@ -55,7 +55,7 @@ printf("\n");
  * print_osabi - Prints value of OS/ABI.
  * @header: Information in header.
 */
-void print_osapi(char *header)
+void print_osabi(char *header)
 {
 printf("  %-35s", "OS/ABI:");
 switch (header[7])
