@@ -1,15 +1,15 @@
 #include "lists.h"
 
 /**
-* free_listint_safe - Frees a linked list, even if it has a loop.
-* @h: Pointer to the head of the list.
+* free_listint_safe - frees a linked list, even if it has a loop.
+* @h: pointer to the head of list.
 *
-* Return: The number of nodes freed.
+* Return: num of nodes freed.
 */
 size_t free_listint_safe(listint_t **h)
 {
 size_t node_count = 0;
-int offset;
+int set;
 listint_t *current, *next_node;
 
 if (h == NULL)
@@ -17,8 +17,8 @@ return (0);
 
 while (*h != NULL)
 {
-offset = *h - (*h)->next;
-if (offset > 0)
+set = *h - (*h)->next;
+if (set > 0)
 {
 current = *h;
 next_node = (*h)->next;

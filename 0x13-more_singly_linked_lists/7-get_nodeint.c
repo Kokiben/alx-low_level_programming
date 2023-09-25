@@ -2,17 +2,17 @@
 
 /**
 * get_nodeint_at_index - returns the nth node of the linked list
-* @head: a head of a list.
+* @head: a head of the list.
 * @index: index of the node
 *
-* Return: If node does not exist, returns NULL.
+* Return: if node does not exist, returns NULL.
 */
 
 listint_t *get_nodeint_at_index(listint_t *head, unsigned int index)
 {
-unsigned int i;
+unsigned int b;
 
-for (i = 0; i < index && head != NULL; i++)
+for (b = 0; b < index && head != NULL; b++)
 {
 head = head->next;
 }

@@ -1,11 +1,11 @@
 #include "lists.h"
 
 /**
- * sum_listint - returns or calculates the sum of all the data
- * of a linked list
+ * sum_listint - returns or calculates sum of all the data
+ * of the linked list
  * @head: head of a list
  *
- * Return: sum of all the data.
+ * Return: Sum of all the data.
  */
 
 int sum_listint(listint_t *head)
