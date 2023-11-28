@@ -46,7 +46,7 @@ exit(98);
 }
 else if (FILEEND == 0)
 break;
-byte_rd += EndFile;
+byte_rd += FILEEND;
 err = write(fd, buf, FILEEND);
 if (err < 0)
 {
@@ -78,7 +78,7 @@ int fil_close(int Err_dptor)
 int err;
 
 err = close(Err_dptor);
-if (error < 0)
+if (err < 0)
 dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", Err_dptor);
 return (err);
 }
