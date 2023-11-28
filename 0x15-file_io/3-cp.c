@@ -1,79 +1,85 @@
-#include <stdlib.h>
-#include <unistd.h>
+#include "main.h"
 #include <stdio.h>
-#include <fcntl.h>
-#include <sys/stat.h>
-#include <sys/types.h>
 
-#define BUFFER_SIZE 1024
-
+int file_closer(int);
 /**
- * copie_usage_THE_exit - the number of argument is not the correct one,
- * exit with code 97.
+ * main - Main function to copy files
+ * @argc: The number of passed arguments
+ * @argv: The pointers to array arguments
+ * Return: 1 on success, exits on failure
  */
-void copie_usage_THE_exit(void)
-{
-dprintf(2, "Usage: cp file_from file_to\n");
-exit(97);
-}
-
-/**
- * copie_error_THE_exit - error message.
- * @messag: error message to print.
- * @exit_cod: The exit code to use.
- */
-void copie_error_THE_exit(const char *messag, int exit_cod)
-{
-dprintf(2, "%s\n", messag);
-exit(exit_cod);
-}
-
-
-/**
- * close_file_THE_exit - close file descriptors and exit .
- * @fd_from: file descriptor.
- * @fd_to: destination file descriptor.
- * @exit_code: exit code to use.
- */
-void close_file_THE_exit(int fd_from, int fd_to, int exit_code)
-{
-	close(fd_from);
-	close(fd_to);
-	exit(exit_code);
-}
-
 int main(int argc, char *argv[])
 {
-	int fd_from, fd_to;
-	ssize_t byte_rd, byte_wrt;
-	char buf[BUFFER_SIZE];
+	char buffer[1024];
+	int bytes_read = 0, EndFile = 1, form = -1, fd = -1, error = 0;
 
-if (argc != 3)
-copie_usage_THE_exit();
+	if (argc != 3)
+	{
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		exit(97);
+	}
 
-fd_from = open(argv[1], O_RDONLY);
-if (fd_from == -1)
-copie_error_THE_exit("Error: Can't read from file", 98);
+	form = open(argv[1], O_RDONLY);
+	if (form < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
 
-fd_to = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-if (fd_to == -1)
-copie_error_THE_exit("Error: Can't write to file", 99);
+	fd = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
+	if (fd < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		file_closer(form);
+		exit(99);
+	}
 
-while ((byte_rd = read(fd_from, buf, BUFFER_SIZE)) > 0)
+	while (EndFile)
+	{
+		EndFile = read(form, buffer, 1024);
+		if (EndFile < 0)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			file_closer(form);
+			file_closer(fd);
+			exit(98);
+		}
+		else if (EndFile == 0)
+			break;
+		bytes_read += EndFile;
+		error = write(fd, buffer, EndFile);
+		if (error < 0)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			file_closer(form);
+			file_closer(fd);
+			exit(99);
+		}
+	}
+	error = file_closer(fd);
+	if (error < 0)
+	{
+		file_closer(form);
+		exit(100);
+	}
+	error = file_closer(form);
+	if (error < 0)
+		exit(100);
+	return (0);
+}
+
+/**
+ * file_closer - A function that closes a file and prints
+ * error when closed file
+ * @Error_desc: Error_desc for closed file
+ * Return: 1 on success, -1 on failure
+ */
+int file_closer(int Error_desc)
 {
-byte_wrt = write(fd_to, buf, byte_rd);
-if (byte_wrt == -1)
-close_file_THE_exit(fd_from, fd_to, 99);
+	int error;
+
+	error = close(Error_desc);
+	if (error < 0)
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", Error_desc);
+	return (error);
 }
-
-if (byte_rd == -1)
-close_file_THE_exit(fd_from, fd_to, 98);
-
-if (close(fd_from) == -1 || close(fd_to) == -1)
-copie_error_THE_exit("Error: Can't close fd", 100);
-
-chmod(argv[2], S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
-
-return (0);
-}
-
