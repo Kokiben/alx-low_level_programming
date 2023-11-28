@@ -62,12 +62,12 @@ copie_error_exit("Error: Can't write to file", 99);
 while ((byte_rd = read(fd_from, buf, BUFFER_SIZE)) > 0)
 {
 byte_wrt = write(fd_to, buf, byte_rd);
-if (bytes_wrt == -1)
-close_files_exit(fd_from, fd_to, 99);
+if (byte_wrt == -1)
+close_file_exit(fd_from, fd_to, 99);
 }
 
 if (byte_rd == -1)
-close_files_exit(fd_from, fd_to, 98);
+close_file_exit(fd_from, fd_to, 98);
 
 if (close(fd_from) == -1 || close(fd_to) == -1)
 copie_error_exit("Error: Can't close fd", 100);
