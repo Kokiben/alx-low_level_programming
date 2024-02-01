@@ -1,6 +1,43 @@
 #include "hash_tables.h"
 
 /**
+ * hash_new - create a new node
+ * @key: node key
+ * @value: node value
+ *
+ * Return: new node
+ */
+
+hash_node_t *hash_new(const char *key, const char *value)
+{
+hash_node_t *tmp_n;
+
+tmp_n = malloc(sizeof(hash_node_t));
+
+if (tmp_n == NULL)
+return (NULL);
+
+tmp_n->key = strdup(key);
+if (tmp_n->key == NULL)
+{
+free(tmp_n);
+return (NULL);
+}
+tmp_n->value = strdup(value);
+if (tmp_n->value == NULL)
+{
+free(tmp_n->key);
+free(tmp_n);
+return (NULL);
+}
+
+tmp_n->next = NULL;
+
+return (tmp_n);
+}
+
+
+/**
  * hash_table_set - Inserts an entry into hash table
  * @ht: Ptr to hash table
  * @key: Key entry into a hash table.
@@ -35,40 +72,4 @@ n_tmp->next = ht->array[in];
 ht->array[in] = n_tmp;
 
 return (1);
-}
-
-/**
- * new_node - create a new node
- * @key: node key
- * @value: node value
- *
- * Return: new node
- */
-
-hash_node_t *hash_new(const char *key, const char *value)
-{
-hash_node_t *tmp_n;
-
-tmp_n = malloc(sizeof(hash_node_t));
-
-if (tmp_n == NULL)
-return (NULL);
-
-tmp_n->key = strdup(key);
-if (tmp_n->key == NULL)
-{
-free(tmp_n);
-return (NULL);
-}
-tmp_n->value = strdup(value);
-if (tmp_n->value == NULL)
-{
-free(tmp_n->key);
-free(tmp_n);
-return (NULL);
-}
-
-tmp_n->next = NULL;
-
-return (tmp_n);
 }
