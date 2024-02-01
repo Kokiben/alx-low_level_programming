@@ -16,7 +16,7 @@ if (sh_tab == NULL)
 return (NULL);
 
 sh_tab->size = size;
-sh_tab->array = malloc(sizeof(hash_node_t *) * size);
+sh_tab->array = malloc(size * sizeof(hash_node_t *));
 if (sh_tab->array == NULL)
 {
 free(sh_tab);
