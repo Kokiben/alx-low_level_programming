@@ -1,11 +1,11 @@
 #include "hash_tables.h"
 
 /**
- * hash_new - create a new node
- * @key: node key
- * @value: node value
+ * hash_new - create a new hash
+ * @key: key entry
+ * @value: value entry
  *
- * Return: new node
+ * Return: Hash new
  */
 
 hash_node_t *hash_new(const char *key, const char *value)
