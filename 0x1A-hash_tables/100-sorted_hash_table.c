@@ -177,7 +177,7 @@ shash_node_t *tmp;
 char flag = 0; /* 0 before printing any data, 1 after*/
 
 if (ht == NULL || ht->array == NULL)
-		return;
+return;
 printf("{");
 tmp = ht->shead;
 while (tmp != NULL)
