@@ -63,8 +63,8 @@ return (sht);
 
 /**
  * addsortt_list - add to sort
- * @table: Sort hash table
- * @node: To add
+ * @tab: Sort hash table
+ * @nd: To add
  *
  * Return: void
  */
