@@ -1,6 +1,8 @@
-#ifndef MAIN_H
-#define MAIN_H
-
+#ifndef SEARCH_ALGOS_H
+#define SEARCH_ALGOS_H
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * struct listint_s - singly linked list
