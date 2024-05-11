@@ -27,7 +27,7 @@ if (array[idx] == value)
 return (idx);
 l++;
 jump = idx;
-idx = l * j;
+idx = l *j;
 } while (idx < (int)size && array[idx] < value);
 
 printf("Value found between indexes [%d] and [%d]\n", jump, idx);
