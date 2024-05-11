@@ -12,7 +12,7 @@
  */
 listint_t *jump_list(listint_t *list, size_t size, int value)
 {
-size_t idx = 0;
+size_t index = 0;
 size_t L = 0;
 size_t Q;
 listint_t *jump;
@@ -25,24 +25,24 @@ Q = (size_t)sqrt((double)size);
 do {
 jump = list;
 L++;
-idx = L *Q;
+index = L *Q;
 
-while (list->next && list->idx < idx)
+while (list->next && list->index < index)
 list = list->next;
 
-if (list->next == NULL && idx != list->idx)
-idx = list->idx;
+if (list->next == NULL && index != list->index)
+index = list->index;
 
-printf("Value checked at index [%d] = [%d]\n", (int)idx, list->n);
+printf("Value checked at index [%d] = [%d]\n", (int)index, list->n);
 
-} while (idx < size && list->next && list->n < value);
+} while (index < size && list->next && list->n < value);
 
 printf("Value found between indexes ");
-printf("[%d] and [%d]\n", (int)jump->idx, (int)list->idx);
+printf("[%d] and [%d]\n", (int)jump->index, (int)list->index);
 
-for (; jump && jump->idx <= list->idx; jump = jump->next)
+for (; jump && jump->index <= list->index; jump = jump->next)
 {
-printf("Value checked at index [%d] = [%d]\n", (int)jump->idx, jump->n);
+printf("Value checked at index [%d] = [%d]\n", (int)jump->index, jump->n);
 if (jump->n == value)
 return (jump);
 }
